@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number System Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        .result {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Number System Converter</h2>
+
+        <!-- Input -->
+        <label for="inputValue">Enter a number:</label>
+        <input type="text" id="inputValue" placeholder="Enter value">
+
+        <!-- Conversion options -->
+        <label for="conversionType">Select Conversion:</label>
+        <select id="conversionType">
+            <option value="decimalToBinary">Decimal to Binary</option>
+            <option value="binaryToDecimal">Binary to Decimal</option>
+            <option value="decimalToOctal">Decimal to Octal</option>
+            <option value="octalToDecimal">Octal to Decimal</option>
+            <option value="binaryToOctal">Binary to Octal</option>
+            <option value="octalToBinary">Octal to Binary</option>
+            <option value="hexToOctal">Hexadecimal to Octal</option>
+            <option value="octalToHex">Octal to Hexadecimal</option>
+            <option value="hexToDecimal">Hexadecimal to Decimal</option>
+            <option value="decimalToHex">Decimal to Hexadecimal</option>
+            <option value="hexToBinary">Hexadecimal to Binary</option>
+            <option value="binaryToHex">Binary to Hexadecimal</option>
+        </select>
+
+        <!-- Convert button -->
+        <button onclick="convert()">Convert</button>
+
+        <!-- Result -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function convert() {
+            let inputValue = document.getElementById("inputValue").value;
+            let conversionType = document.getElementById("conversionType").value;
+            let result = document.getElementById("result");
+            let output;
+
+            try {
+                switch (conversionType) {
+                    case "decimalToBinary":
+                        output = parseInt(inputValue, 10).toString(2);
+                        break;
+                    case "binaryToDecimal":
+                        output = parseInt(inputValue, 2).toString(10);
+                        break;
+                    case "decimalToOctal":
+                        output = parseInt(inputValue, 10).toString(8);
+                        break;
+                    case "octalToDecimal":
+                        output = parseInt(inputValue, 8).toString(10);
+                        break;
+                    case "binaryToOctal":
+                        output = parseInt(inputValue, 2).toString(8);
+                        break;
+                    case "octalToBinary":
+                        output = parseInt(inputValue, 8).toString(2);
+                        break;
+                    case "hexToOctal":
+                        output = parseInt(inputValue, 16).toString(8);
+                        break;
+                    case "octalToHex":
+                        output = parseInt(inputValue, 8).toString(16).toUpperCase();
+                        break;
+                    case "hexToDecimal":
+                        output = parseInt(inputValue, 16).toString(10);
+                        break;
+                    case "decimalToHex":
+                        output = parseInt(inputValue, 10).toString(16).toUpperCase();
+                        break;
+                    case "hexToBinary":
+                        output = parseInt(inputValue, 16).toString(2);
+                        break;
+                    case "binaryToHex":
+                        output = parseInt(inputValue, 2).toString(16).toUpperCase();
+                        break;
+                    default:
+                        output = "Invalid conversion!";
+                }
+                result.innerHTML = "Result: " + output;
+            } catch (error) {
+                result.innerHTML = "Error: Invalid input!";
+            }
+        }
+    </script>
+</body>
+</html>
